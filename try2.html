@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/css/foundation.min.css" crossorigin="anonymous">
+
+<!-- Compressed JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+  <title>WEB</title>
+</head>
+<body style="margin: 10px;">
+    <p>Youtube Subscribe Button</p>
+    <button class = "hollow button" id = ".in" onclick="subscribe()"> Subscribe</button>
+
+    <p>ORDERS ABOVE $40 ARE ELIGIBLE FOR FREE ORDERS</p>
+    <input type="number" id="amount" placeholder="Enter Amount" onkeydown="if(event.key === 'Enter') {submit()}">
+    <button class = "hollow button" onclick="submit()">Submit</button>
+    <p id = "text"></p>
+
+</body>
+<script>
+  const button = document.getElementById(".in");
+  function subscribe() {
+    if(button.innerText === "Subscribe") {
+      button.innerHTML = "Unsubscribe";
+    } else {
+      button.innerHTML = "Subscribe";
+    }
+  }
+  function submit(){
+    var amount = document.getElementById("amount");
+    var text = document.getElementById("text");
+    if(amount.value > 40) {
+      text.innerText = `You are eligible for free orders. Total Amount $${amount.value}`;
+    } else {
+      text.innerText = `You are not eligible for free orders +$10. Total Amount $${parseInt(amount.value) + 10}`;
+    }
+  }
+</script>
+</html>

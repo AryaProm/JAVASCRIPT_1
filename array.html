@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/css/foundation.min.css"
+      crossorigin="anonymous"
+    />
+
+    <!-- Compressed JavaScript -->
+
+    <title>ARRAY</title>
+  </head>
+  <body style="margin: 2%">
+    <input
+      type="text"
+      class="input-tag"
+      placeholder="Enter To-Do"
+      onkeydown="if(event.key === 'Enter') {submit(); this.value = ''}"
+    />
+    <input
+      type="date"
+      class="date"
+      onkeydown="if(event.key === 'Enter') {submit()}"
+      style="display: inline"
+    />
+    <button onclick="submit()" class="hollow button">Submit</button>
+    <div class="div"></div>
+  </body>
+  <script>
+    // var user_array = [];
+    // var count = 0;
+    // while (true) {
+    //   var user_input = prompt("Enter a value or type nothing to exit");
+    //   if (user_input === "") break;
+    //   user_array.push(user_input);
+    // }
+    
+    // console.log(
+    //   user_array.filter((value) => {
+    //     if (value === "egg" && count < 2) {
+    //       count+=1;
+    //       return false;
+    //     }
+    //     return true;
+    //   })
+    // );
+
+    // document.body.addEventListener("keydown", (event) => {
+
+    // });
+
+    var arr = JSON.parse(localStorage.getItem("todos")) || [];
+    the_loop();
+    function the_loop() {
+      for (let index = 0; index < arr.length; index++) {
+        document.getElementsByClassName(
+          "div"
+        )[0].innerHTML += `<span>${arr[index][0]} : ${arr[index][1]}</span>  <button onclick = "remove(${index})" class="hollow button">Remove</button> <br>`;
+      }
+    }
+
+    function remove(index) {
+      arr.splice(index, 1);
+      localStorage.setItem("todos", JSON.stringify(arr));
+      document.getElementsByClassName("div")[0].innerHTML = "";
+      the_loop();
+    }
+
+    function submit() {
+      var input = document.querySelector(".input-tag");
+      var date = document.querySelector(".date");
+      var output = document.querySelector(".output");
+
+      if (input.value != "" && date.value != "") {
+        console.log(typeof date.value);
+        arr.push([input.value, date.value]);
+        localStorage.setItem("todos", JSON.stringify(arr));
+
+        document.getElementsByClassName("div")[0].innerHTML = "";
+        the_loop();
+
+        input.value = "";
+        date.value = "";
+        console.log(arr);
+      }
+    }
+  </script>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Compressed CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/css/foundation.min.css"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Compressed JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/js/foundation.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>ROCK PAPER SISSOR</title>
+
+    <style>
+      body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .container .image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 20px;
+      }
+
+      .image-container img {
+        max-width: 20%; /* Adjust the size as needed */
+        max-height: 20%; /* Maintain the aspect ratio */
+      }
+
+      .image-container span {
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+
+        
+    </style>
+  </head>
+  <body>
+    <h1>ROCK PAPER SCISSOR GAME</h1>
+    <br />
+    <button onclick="show(1)" class="hollow button">Rock</button>
+    <button onclick="show(2)" class="hollow button">Paper</button>
+    <button onclick="show(3)" class="hollow button">Scissor</button>
+    <button onclick="reset()" class="hollow button">Reset Score</button>
+    <br />
+
+    <div class="container"></div>
+    <p class="moves"></p>
+    <p class="scores"></p>
+
+    <script>
+      const scores = document.querySelector(".scores");
+      const moves = document.querySelector(".moves");
+      var score = { win: 0, lose: 0, tie: 0 };
+
+      function reset() {
+        let container = document.querySelector(".container");
+        container.innerHTML = "";
+        score.win = 0;
+        score.lose = 0;
+        score.tie = 0;
+        moves.innerText = "";
+        scores.innerText = `Scores has been reset.\n Win: ${score.win} Lose: ${score.lose} Tie: ${score.tie}`;
+      }
+
+      function random(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+
+      function tp(user) {
+        if (user === 1) {
+          return "Rock";
+        } else if (user === 2) {
+          return "Paper";
+        } else {
+          return "Scissor";
+        }
+      }
+
+      function show(user) {
+        let container = document.querySelector(".container");
+        container.innerHTML = "";
+
+        const pc = random(1, 3); // Random choice for PC
+        let result = "";
+
+        // Determine the result of the game using conditions
+        if (user === pc) {
+          result = `${tp(user)} = ${tp(pc)}\nTie`;
+          score.tie++;
+        } else if (
+          (user === 1 && pc === 3) ||
+          (user === 2 && pc === 1) ||
+          (user === 3 && pc === 2)
+        ) {
+          result = `${tp(user)} > ${tp(pc)}\nYou win`;
+          score.win++;
+        } else {
+          result = `${tp(user)} < ${tp(pc)}\nYou Lose`;
+          score.lose++;
+        }
+
+        moves.innerText = `${result} \n Win: ${score.win} Lose: ${score.lose} Tie: ${score.tie}`;
+        scores.innerText = "";
+
+        let img = document.createElement("img");
+        let You = document.createElement("span");
+        You.innerText = "You";
+        img.src = `images/${tp(user)}.png`;
+        img.classList.add("image");
+        img.alt = "Rock Paper Scissor";
+
+        let img2 = document.createElement("img");
+        let Computer = document.createElement("span");
+        Computer.innerText = "Computer";
+        img2.src = `images/${tp(pc)}.png`;
+        img2.classList.add("image");
+        img2.alt = "Rock Paper Scissor";
+
+        // Create image containers to align text and images
+        let userContainer = document.createElement("div");
+        userContainer.classList.add("image-container");
+        userContainer.appendChild(You);
+        userContainer.appendChild(img);
+
+        let computerContainer = document.createElement("div");
+        computerContainer.classList.add("image-container");
+        computerContainer.appendChild(Computer);
+        computerContainer.appendChild(img2);
+
+        container.appendChild(userContainer);
+        container.appendChild(computerContainer);
+      }
+    </script>
+  </body>
+</html>

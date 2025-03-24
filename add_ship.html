@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/css/foundation.min.css"
+      crossorigin="anonymous"
+    />
+
+    <!-- Compressed JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/js/foundation.min.js"></script>
+
+    <title>ADD SHIP</title>
+  </head>
+  <h3>TYPE SOMETHIN..</h3>
+  <body style="margin: 10px">
+    <input
+      type="text"
+      id="text"
+      placeholder="Enter Text"
+      onkeydown="typing()"
+    />
+    <button onclick="submit()" class="hollow button">SUBMIT</button>
+    <p id="p"></p>
+  </body>
+  <script>
+    var t = document.getElementById("text").value;
+    var p = document.getElementById("p");
+    function typing() {
+      t = document.getElementById("text").value;
+      p = document.getElementById("p");
+      p.innerText = "typing...";
+      if (event.key === "Enter") {
+        submit();
+      }
+    }
+    function submit() {
+      t = document.getElementById("text").value;
+      p.innerText = t;
+    }
+  </script>
+</html>

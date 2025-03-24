@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/css/foundation.min.css" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+    <title>CALCI</title>
+  </head>
+
+  <body style="margin: 10px;">
+  <h4>Open Your Console Dude </h4>
+  <a title="Ctrl + Shift + I || Dude WTF">How ?</a> <br><br>
+  <p class = "output"></p>
+    <button onclick="arr+='1'; output()" class="hollow button">
+      1
+    </button>
+    <button onclick="arr+='2'; output()" class="hollow button">
+      2
+    </button>
+    <button onclick="arr+='3'; output()" class="hollow button">
+      3
+    </button>
+    <button onclick="arr+=' + '; output()" class="hollow button">
+      +</button
+    ><br />
+    <br />
+    <button onclick="arr+='4'; output()" class="hollow button">
+      4
+    </button>
+    <button onclick="arr+='5'; output()" class="hollow button">
+      5
+    </button>
+    <button onclick="arr+='6'; output()" class="hollow button">
+      6
+    </button>
+    <button onclick="arr+=' - '; output()" class="hollow button">
+      -
+    </button>
+    <br /><br />
+    <button onclick="arr+='7'; output()" class="hollow button">
+      7
+    </button>
+    <button onclick="arr+='8'; output()" class="hollow button">
+      8
+    </button>
+    <button onclick="arr+='9'; output()" class="hollow button">
+      9
+    </button>
+    <button onclick="arr+=' * '; output()" class="hollow button">
+      *
+    </button>
+    <br /><br />
+    <button onclick="arr+='0'; output()" class="hollow button">
+      0
+    </button>
+    <button onclick="arr+='.'; output()" class="hollow button">
+      .
+    </button>
+    <button onclick="result()" class="hollow button">=</button>
+    <button onclick="arr+=' / '; output()" class="hollow button">
+      /
+    </button>
+
+  </body>
+
+  <script>
+    var arr = "";
+    var t_sum = 0;
+    let output_text = document.querySelector(".output");
+    function output(){
+      output_text.innerText = arr ;
+    }
+    function result() {
+      let output = document.getElementsByClassName("output");
+      var sum = arr
+        .split(" + ")
+        .join(" + ")
+        .split(" - ")
+        .join(" - ")
+        .split(" * ")
+        .join(" * ")
+        .split(" / ")
+        .join(" / ")
+        .split(" ");
+      for (let index = 0; index < sum.length; index++) {
+        if (sum[index + 1]) {
+          if (sum[index] === "+") {
+            if (t_sum > 0) {
+              t_sum += Number(sum[index + 1]);
+            } else {
+              sum[index] = Number(sum[index - 1]) + Number(sum[index + 1]);
+              t_sum = Number(sum[index]);
+            }
+          } else if (sum[index] === "-") {
+            if (t_sum > 0) {
+              t_sum -= Number(sum[index + 1]);
+            } else {
+              sum[index] = Number(sum[index - 1]) - Number(sum[index + 1]);
+              t_sum = Number(sum[index]);
+            }
+          } else if (sum[index] === "*") {
+            if (t_sum > 0) {
+              console.log("Inside");
+              t_sum = Number(sum[index + 1]);
+            } else {
+              sum[index] = Number(sum[index - 1]) * Number(sum[index + 1]);
+              t_sum = Number(sum[index]);
+            }
+          } else if (sum[index] === "/") {
+            if (t_sum > 0) {
+              t_sum /= Number(sum[index + 1]);
+            } else {
+              sum[index] = Number(sum[index - 1]) / Number(sum[index + 1]);
+              t_sum = Number(sum[index]);
+            }
+          }
+        }
+      }
+      output_text.innerText = t_sum;
+      arr = "";
+      t_sum = 0;
+    }
+  </script>
+</html>
