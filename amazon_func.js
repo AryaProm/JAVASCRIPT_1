@@ -1,5 +1,5 @@
-import { cart, cartLoop, cartQuantity } from "./cart.js";
-import { products } from "./amazon.js";
+import {cartLoop, cartQuantity } from "./cart.js";
+import { products } from "./products.js";
 
 const productContainer = document.getElementById("product-container");
 products.forEach((product) => {
@@ -37,6 +37,5 @@ document.querySelectorAll(".button").forEach((button) => {
     if (cartButton) {
       cartButton.textContent = cartQuantity(); // Update the textContent of the cart button
     }
-    console.log(cartQuantity())
   });
 });

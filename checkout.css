@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+  }
+  
+  header {
+    background-color: #131921;
+    color: white;
+    padding: 10px 20px;
+  }
+  
+  header .logo {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  header .cart-info a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    background-color: #ff9900;
+    border-radius: 5px;
+  }
+  
+  .checkout-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  .checkout-left, .checkout-right {
+    width: 45%;
+    padding: 20px;
+  }
+  
+  .checkout-left h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  .cart-item-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .product-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+  }
+  
+  .cart-item-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-name {
+    font-weight: bold;
+  }
+  
+  .quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .quantity button {
+    margin: 0 5px;
+  }
+  
+  .cart-item-right {
+    text-align: right;
+  }
+  
+  .remove-item {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .remove-item:hover {
+    background-color: darkred;
+  }
+  
+  .order-summary {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .order-summary .order-total,
+  .order-summary .order-tax,
+  .order-summary .order-shipping {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  #payment-button {
+    background-color: #ff9900;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  
+  #payment-button:hover {
+    background-color: #e68900;
+  }
+  

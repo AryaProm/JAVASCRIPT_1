@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Amazon Clone</title>
+  <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="/" class="logo">Cart Summary</a>
+      <div class="cart-info">
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="checkout-container">
+      <!-- Left side: Product List -->
+      <div class="checkout-left">
+        <h2>Your Order</h2>
+        <div id="cart-items"></div>
+      </div>
+
+      <!-- Right side: Order Summary -->
+      <div class="checkout-right">
+        <h2>Order Summary</h2>
+        <div class="order-summary">
+          <div class="order-total">
+            <span>Subtotal</span>
+            <span id="subtotal"></span>
+          </div>
+          <div class="order-tax">
+            <span>Taxes</span>
+            <span id="taxes">$0.00</span>
+          </div>
+          <div class="order-shipping">
+            <span>Delivery Charges</span>
+            <span id="shipping">$0.00</span>
+          </div>
+          <div class="order-total">
+            <span>Total</span>
+            <span id="final-total">$0.00</span>
+          </div>
+        </div>
+
+        <button id="payment-button">Proceed to Payment</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="checkout.js" type = "module"></script>
+
+</body>
+</html>
